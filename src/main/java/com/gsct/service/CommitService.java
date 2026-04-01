@@ -24,7 +24,7 @@ public class CommitService {
     @Value("${slack.webhook.url}")
     private String webhookUrl;
     
-    
+    // saves commit details to database
     public void saveCommit(String authorName, List<String> commitMessages) {
         Author author = new Author();
         author.setName(authorName);
@@ -42,7 +42,7 @@ public class CommitService {
         sendSlackNotification(authorName, commitMessages);
     }
 
-    
+    // sends slack notification
     private void sendSlackNotification(String authorName, List<String> commitMessages) {
         String message = authorName + " pushed " + commitMessages.size() + " commits:\n";
         for (String msg : commitMessages) {
