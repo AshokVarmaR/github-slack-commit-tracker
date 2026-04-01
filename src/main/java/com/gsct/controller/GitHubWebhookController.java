@@ -18,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/github-webhook")
 public class GitHubWebhookController {
+	
+	// Comit service methods
 
     private final CommitService commitService;
 
