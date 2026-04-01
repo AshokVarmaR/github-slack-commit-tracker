@@ -11,7 +11,10 @@ import com.gsct.model.Commit;
 import com.gsct.repository.AuthorRepository;
 import com.gsct.repository.CommitRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CommitService {
 
     private final AuthorRepository authorRepo;
@@ -20,12 +23,6 @@ public class CommitService {
     
     @Value("${slack.webhook.url}")
     private String webhookUrl;
-
-    public CommitService(AuthorRepository authorRepo, CommitRepository commitRepo) {
-        this.authorRepo = authorRepo;
-        this.commitRepo = commitRepo;
-        this.webClient = WebClient.create(); // For Slack API calls
-    }
 
     public void saveCommit(String authorName, List<String> commitMessages) {
         Author author = new Author();
